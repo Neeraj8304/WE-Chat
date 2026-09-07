@@ -37,6 +37,7 @@ import {
 import {
   clearOAuthReturnUrl,
   findOrCreateConversation,
+  formatGoogleOAuthError,
   getOAuthReturnError,
   markThreadRead,
   sendMessage,
@@ -199,7 +200,7 @@ function AuthLanding({
     );
     if (error) {
       setBusy(false);
-      setNotice({ tone: "error", text: error.message });
+      setNotice({ tone: "error", text: formatGoogleOAuthError(error) });
     }
   }
 

@@ -43,6 +43,18 @@ export function clearOAuthReturnUrl() {
   );
 }
 
+export function formatGoogleOAuthError(error: unknown) {
+  const message = error instanceof Error ? error.message : String(error);
+  if (
+    /unsupported provider|provider.*(disabled|not enabled)|google.*(disabled|not enabled)/i.test(
+      message
+    )
+  ) {
+    return "Google sign-in is not enabled in Supabase yet. Enable Auth → Providers → Google, add the Google client credentials, and try again.";
+  }
+  return message || "Google sign-in could not be completed.";
+}
+
 export function upsertProfile(client: SupabaseDataClient, profile: Profile) {
   return client
     .from("profiles")

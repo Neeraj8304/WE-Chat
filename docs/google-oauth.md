@@ -39,3 +39,7 @@ If Supabase reports a redirect error, compare the browser origin character-for-c
 [1]: https://supabase.com/docs/guides/auth/social-login/auth-google "Supabase: Login with Google"
 [2]: https://supabase.com/docs/guides/auth/redirect-urls "Supabase: Redirect URLs"
 [3]: https://console.cloud.google.com/auth/overview "Google Auth Platform"
+
+## Troubleshooting: Google button appears but does not work
+
+If clicking **Continue with Google** returns an unsupported-provider or provider-disabled error, the Supabase project has Google disabled. The application cannot enable an external OAuth provider from browser code. In the Supabase dashboard, open **Authentication → Providers → Google**, enable the provider, and save a valid Google Web OAuth **Client ID** and **Client Secret**. The Google Cloud client must list the Thoni origin under **Authorized JavaScript origins** and `https://hhogahentbnrijcweccm.supabase.co/auth/v1/callback` under **Authorized redirect URIs**. The application now turns this disabled-provider response into an actionable setup notice.

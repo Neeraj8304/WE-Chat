@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 import {
   clearOAuthReturnUrl,
   findOrCreateConversation,
+  formatGoogleOAuthError,
   getOAuthReturnError,
   markThreadRead,
   sendMessage,
@@ -69,6 +70,15 @@ describe("chat Supabase service", () => {
       options: { redirectTo: "https://thoni.example.com/" },
     });
     expect(result.data.url).toContain("accounts.google.com");
+  });
+
+  it("formats disabled Google provider errors with setup guidance", () => {
+    expect(
+      formatGoogleOAuthError(new Error("Unsupported provider: google"))
+    ).toContain("Enable Auth → Providers → Google");
+    expect(formatGoogleOAuthError(new Error("Consent cancelled"))).toBe(
+      "Consent cancelled"
+    );
   });
 
   it("parses OAuth errors from callback fragments and query strings", () => {
