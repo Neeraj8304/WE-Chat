@@ -1,0 +1,22 @@
+# Project TODO
+
+- [x] Add Supabase client configuration through environment variables
+- [x] Implement email/password or magic-link authentication flow
+- [x] Implement onboarding profile collection for email, name, and location
+- [x] Persist profiles in the profiles table with created_at
+- [x] Implement responsive WhatsApp/Arattai-style chat shell and navigation
+- [x] Implement conversation list with recent chats and unread/read states
+- [x] Implement contacts and new-chat flow
+- [x] Implement message thread with text sending and timestamps
+- [x] Implement message read receipts
+- [x] Add realtime message and conversation updates
+- [x] Add database schema/migrations for profiles, messages, conversations, and RLS policies
+- [x] Add Vitest coverage for authentication and chat data flows
+- [x] Verify desktop and mobile responsive layouts in the browser
+- [x] Verify error, loading, empty, and unauthenticated states
+- [ ] Save a deployment-ready checkpoint and provide repository/live deployment guidance
+- [x] Add unread conversation indicators/counts driven by message read state and display them in the conversation list
+- [x] Subscribe to message UPDATE events so read receipts update live for senders
+- [x] Add Vitest coverage for auth and chat data flows: sign-in handling, profile upsert, conversation creation, message insert, and read-receipt updates
+- [x] Browser-test and document loading, error, empty inbox, empty contacts, and authenticated/chat states
+- [ ] Browser-test authenticated/chat, empty inbox, empty contacts, loading, and schema/error states with Supabase-backed sessions, and document the verified outcomes/screens covered
