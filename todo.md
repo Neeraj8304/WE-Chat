@@ -25,3 +25,6 @@
 - [x] Document Supabase Google provider setup, redirect URLs, and Google Cloud OAuth configuration
 - [x] Add Vitest coverage for Google sign-in initiation and callback-safe auth handling
 - [ ] Verify the Google OAuth UI and save an updated checkpoint
+- [x] Rename visible Arattai branding to Thoni across the auth and chat UI
+- [x] Update document title, metadata, and related project copy to Thoni
+- [ ] Verify the Thoni branding at desktop and mobile sizes and save an updated checkpoint

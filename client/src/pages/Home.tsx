@@ -238,7 +238,7 @@ function AuthLanding({
             <span className="grid h-10 w-10 place-items-center rounded-2xl bg-[#d7efe8] text-[#123f38]">
               <MessageCircle className="h-5 w-5" />
             </span>
-            Arattai
+            Thoni
           </div>
 
           <div className="relative z-10 max-w-xl">
@@ -282,7 +282,7 @@ function AuthLanding({
                 <span className="grid h-10 w-10 place-items-center rounded-2xl bg-[#d7efe8]">
                   <MessageCircle className="h-5 w-5" />
                 </span>{" "}
-                Arattai
+                Thoni
               </div>
               <p className="text-sm font-medium text-[#0f6b5f]">
                 Conversations, considered.
@@ -434,8 +434,8 @@ function AuthLanding({
               <Mail className="h-4 w-4" /> Send a magic link
             </button>
             <p className="mt-6 text-center text-xs leading-5 text-[#9a9e99]">
-              By continuing, you agree to keep Arattai a respectful space for
-              real conversations.
+              By continuing, you agree to keep Thoni a respectful space for real
+              conversations.
             </p>
           </div>
         </section>
@@ -495,7 +495,7 @@ function ProfileOnboarding({
             <span className="grid h-10 w-10 place-items-center rounded-2xl bg-[#d7efe8] text-[#123f38]">
               <MessageCircle className="h-5 w-5" />
             </span>{" "}
-            Arattai
+            Thoni
           </div>
           <p className="mb-4 text-sm text-[#a9d2c8]">
             One last thoughtful detail
@@ -561,7 +561,7 @@ function ProfileOnboarding({
               type="submit"
               className="group flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#123f38] px-5 text-sm font-semibold text-white transition hover:bg-[#0d332e] active:scale-[0.99] disabled:opacity-60"
             >
-              {busy ? "Saving your profile…" : "Enter Arattai"}
+              {busy ? "Saving your profile…" : "Enter Thoni"}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </button>
           </form>
@@ -840,7 +840,7 @@ function ChatThread({
       });
     void markThreadRead(supabase, currentUserId, profile.id);
     const channel = supabase
-      .channel(`arattai-messages-${currentUserId}-${profile.id}`)
+      .channel(`thoni-messages-${currentUserId}-${profile.id}`)
       .on(
         "postgres_changes",
         { event: "*", schema: "public", table: "messages" },
@@ -1107,8 +1107,8 @@ function AccountRail({
           {profile.location || "Location not shared"}
         </p>
         <div className="mt-6 border-t border-white/10 pt-4 text-xs leading-5 text-[#b9d8cf]">
-          Your conversations are yours. Arattai keeps this space simple,
-          private, and easy to return to.
+          Your conversations are yours. Thoni keeps this space simple, private,
+          and easy to return to.
         </div>
       </div>
       <div className="mt-auto space-y-2">
@@ -1208,7 +1208,7 @@ function ChatApp({
 
   useEffect(() => {
     const channel = supabase
-      .channel(`arattai-updates-${session.user.id}`)
+      .channel(`thoni-updates-${session.user.id}`)
       .on(
         "postgres_changes",
         { event: "*", schema: "public", table: "conversations" },

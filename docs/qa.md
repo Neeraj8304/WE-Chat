@@ -20,4 +20,8 @@ The authentication screen was visually checked at desktop and mobile widths afte
 
 ## OAuth callback-error verification
 
-The preview was opened with a simulated `error_description` callback parameter. Arattai displayed the user-facing message **“Google sign-in could not be completed: Google consent was cancelled”** while keeping the email, Google, and magic-link actions usable. Returning to the clean origin showed the normal auth screen without the error notice, confirming that the callback URL cleanup path is safe. A real Google round-trip remains dependent on enabling the provider and supplying Google OAuth credentials in Supabase.
+The preview was opened with a simulated `error_description` callback parameter. Thoni displayed the user-facing message **“Google sign-in could not be completed: Google consent was cancelled”** while keeping the email, Google, and magic-link actions usable. Returning to the clean origin showed the normal auth screen without the error notice, confirming that the callback URL cleanup path is safe. A real Google round-trip remains dependent on enabling the provider and supplying Google OAuth credentials in Supabase.
+
+## Thoni branding verification
+
+The renamed **Thoni** wordmark, onboarding copy, browser title, and Google sign-in surface were checked at desktop and mobile widths. The desktop layout shows the new wordmark without disturbing the two-panel composition. The 390px mobile layout keeps the THONI label, Google button, magic-link action, and form controls readable without horizontal overflow.

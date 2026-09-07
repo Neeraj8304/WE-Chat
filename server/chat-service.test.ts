@@ -61,26 +61,26 @@ describe("chat Supabase service", () => {
     };
     const result = await signInWithGoogle(
       { auth },
-      "https://arattai.example.com/"
+      "https://thoni.example.com/"
     );
 
     expect(auth.signInWithOAuth).toHaveBeenCalledWith({
       provider: "google",
-      options: { redirectTo: "https://arattai.example.com/" },
+      options: { redirectTo: "https://thoni.example.com/" },
     });
     expect(result.data.url).toContain("accounts.google.com");
   });
 
   it("parses OAuth errors from callback fragments and query strings", () => {
     expect(
-      getOAuthReturnError("https://arattai.example/#error=access_denied")
+      getOAuthReturnError("https://thoni.example/#error=access_denied")
     ).toBe("access_denied");
     expect(
       getOAuthReturnError(
-        "https://arattai.example/?error_description=Consent%20was%20cancelled"
+        "https://thoni.example/?error_description=Consent%20was%20cancelled"
       )
     ).toBe("Consent was cancelled");
-    expect(getOAuthReturnError("https://arattai.example/")).toBeNull();
+    expect(getOAuthReturnError("https://thoni.example/")).toBeNull();
     expect(() => clearOAuthReturnUrl()).not.toThrow();
   });
 

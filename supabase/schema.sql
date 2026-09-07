@@ -1,4 +1,4 @@
--- Arattai chat schema
+-- Thoni chat schema
 -- Run this in Supabase SQL Editor before using the app.
 
 create extension if not exists pgcrypto;

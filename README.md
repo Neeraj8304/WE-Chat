@@ -1,6 +1,6 @@
-# Arattai
+# Thoni
 
-Arattai is a focused WhatsApp-style chat experience for private, everyday conversations. It includes email/password authentication, magic-link sign-in, profile onboarding, contact discovery, realtime conversations, timestamps, and read receipts.
+Thoni is a focused WhatsApp-style chat experience for private, everyday conversations. It includes email/password authentication, magic-link sign-in, profile onboarding, contact discovery, realtime conversations, timestamps, and read receipts.
 
 ## Stack
 
