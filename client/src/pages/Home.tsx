@@ -35,9 +35,12 @@ import {
   type Profile,
 } from "@/lib/supabase";
 import {
+  clearOAuthReturnUrl,
   findOrCreateConversation,
+  getOAuthReturnError,
   markThreadRead,
   sendMessage,
+  signInWithGoogle,
 } from "@/lib/chat-service";
 
 type AuthMode = "signin" | "signup";
@@ -131,8 +134,10 @@ function NoticeBanner({
 
 function AuthLanding({
   onAuthenticated,
+  initialNotice,
 }: {
   onAuthenticated: (session: Session) => void;
+  initialNotice?: Notice | null;
 }) {
   const [mode, setMode] = useState<AuthMode>("signin");
   const [email, setEmail] = useState("");
@@ -140,7 +145,7 @@ function AuthLanding({
   const [location, setLocation] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
-  const [notice, setNotice] = useState<Notice | null>(null);
+  const [notice, setNotice] = useState<Notice | null>(initialNotice ?? null);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -182,6 +187,19 @@ function AuthLanding({
       });
     } finally {
       setBusy(false);
+    }
+  }
+
+  async function handleGoogleSignIn() {
+    setBusy(true);
+    setNotice(null);
+    const { error } = await signInWithGoogle(
+      supabase,
+      `${window.location.origin}/`
+    );
+    if (error) {
+      setBusy(false);
+      setNotice({ tone: "error", text: error.message });
     }
   }
 
@@ -395,6 +413,14 @@ function AuthLanding({
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </button>
             </form>
+            <button
+              type="button"
+              disabled={busy}
+              onClick={handleGoogleSignIn}
+              className="flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-[#d9d6ce] bg-white px-5 text-sm font-semibold text-[#38514a] transition hover:border-[#a3c8bd] hover:bg-[#f8fbf9] disabled:cursor-wait disabled:opacity-60"
+            >
+              <Globe2 className="h-4 w-4" /> Continue with Google
+            </button>
             <div className="my-6 flex items-center gap-3 text-[11px] font-medium tracking-[0.14em] text-[#a1a6a1] uppercase">
               <span className="h-px flex-1 bg-[#e8e4dc]" /> or{" "}
               <span className="h-px flex-1 bg-[#e8e4dc]" />
@@ -1338,8 +1364,17 @@ export default function Home() {
   const [session, setSession] = useState<Session | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [authReady, setAuthReady] = useState(false);
+  const [oauthNotice, setOauthNotice] = useState<Notice | null>(null);
 
   useEffect(() => {
+    const oauthError = getOAuthReturnError(window.location.href);
+    if (oauthError) {
+      setOauthNotice({
+        tone: "error",
+        text: `Google sign-in could not be completed: ${oauthError}`,
+      });
+      clearOAuthReturnUrl();
+    }
     let active = true;
     supabase.auth.getSession().then(({ data }) => {
       if (active) {
@@ -1387,7 +1422,10 @@ export default function Home() {
         Opening your space…
       </div>
     );
-  if (!session) return <AuthLanding onAuthenticated={setSession} />;
+  if (!session)
+    return (
+      <AuthLanding onAuthenticated={setSession} initialNotice={oauthNotice} />
+    );
   if (!profile)
     return (
       <ProfileOnboarding

@@ -13,3 +13,11 @@ The implementation includes explicit loading, onboarding, schema/data error, emp
 ## Supabase setup required before live use
 
 Run `supabase/schema.sql` in the Supabase SQL Editor, add the local and production origins to Supabase Auth redirect URLs, and then create or sign in with a real account. The app will surface a clear setup notice if the tables or RLS policies have not been applied.
+
+## Google OAuth UI verification
+
+The authentication screen was visually checked at desktop and mobile widths after adding **Continue with Google**. The button appears directly beneath the password action, remains readable at 390px width, preserves the magic-link action, and does not introduce horizontal overflow. The OAuth provider itself still requires the manual Google Cloud and Supabase setup documented in `docs/google-oauth.md` before a live redirect can be exercised.
+
+## OAuth callback-error verification
+
+The preview was opened with a simulated `error_description` callback parameter. Arattai displayed the user-facing message **“Google sign-in could not be completed: Google consent was cancelled”** while keeping the email, Google, and magic-link actions usable. Returning to the clean origin showed the normal auth screen without the error notice, confirming that the callback URL cleanup path is safe. A real Google round-trip remains dependent on enabling the provider and supplying Google OAuth credentials in Supabase.

@@ -12,6 +12,37 @@ export function signInWithPassword(
   return client.auth.signInWithPassword({ email, password });
 }
 
+export function signInWithGoogle(
+  client: SupabaseAuthClient,
+  redirectTo: string
+) {
+  return client.auth.signInWithOAuth({
+    provider: "google",
+    options: { redirectTo },
+  });
+}
+
+export function getOAuthReturnError(url: string) {
+  const parsed = new URL(url);
+  const fragment = new URLSearchParams(parsed.hash.replace(/^#/, ""));
+  const query = parsed.searchParams;
+  return (
+    fragment.get("error_description") ||
+    fragment.get("error") ||
+    query.get("error_description") ||
+    query.get("error")
+  );
+}
+
+export function clearOAuthReturnUrl() {
+  if (typeof window === "undefined") return;
+  window.history.replaceState(
+    {},
+    document.title,
+    `${window.location.pathname}${window.location.search}`
+  );
+}
+
 export function upsertProfile(client: SupabaseDataClient, profile: Profile) {
   return client
     .from("profiles")

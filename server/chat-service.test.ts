@@ -1,8 +1,11 @@
 import { describe, expect, it, vi } from "vitest";
 import {
+  clearOAuthReturnUrl,
   findOrCreateConversation,
+  getOAuthReturnError,
   markThreadRead,
   sendMessage,
+  signInWithGoogle,
   signInWithPassword,
   upsertProfile,
 } from "../client/src/lib/chat-service";
@@ -31,12 +34,10 @@ function queryBuilder(result: unknown) {
 describe("chat Supabase service", () => {
   it("delegates password sign-in to Supabase Auth", async () => {
     const auth = {
-      signInWithPassword: vi
-        .fn()
-        .mockResolvedValue({
-          data: { session: { user: { id: "u-1" } } },
-          error: null,
-        }),
+      signInWithPassword: vi.fn().mockResolvedValue({
+        data: { session: { user: { id: "u-1" } } },
+        error: null,
+      }),
     };
     const result = await signInWithPassword(
       { auth },
@@ -49,6 +50,38 @@ describe("chat Supabase service", () => {
       password: "secret123",
     });
     expect(result.data.session).toBeTruthy();
+  });
+
+  it("starts Google OAuth with the supplied callback URL", async () => {
+    const auth = {
+      signInWithOAuth: vi.fn().mockResolvedValue({
+        data: { provider: "google", url: "https://accounts.google.com" },
+        error: null,
+      }),
+    };
+    const result = await signInWithGoogle(
+      { auth },
+      "https://arattai.example.com/"
+    );
+
+    expect(auth.signInWithOAuth).toHaveBeenCalledWith({
+      provider: "google",
+      options: { redirectTo: "https://arattai.example.com/" },
+    });
+    expect(result.data.url).toContain("accounts.google.com");
+  });
+
+  it("parses OAuth errors from callback fragments and query strings", () => {
+    expect(
+      getOAuthReturnError("https://arattai.example/#error=access_denied")
+    ).toBe("access_denied");
+    expect(
+      getOAuthReturnError(
+        "https://arattai.example/?error_description=Consent%20was%20cancelled"
+      )
+    ).toBe("Consent was cancelled");
+    expect(getOAuthReturnError("https://arattai.example/")).toBeNull();
+    expect(() => clearOAuthReturnUrl()).not.toThrow();
   });
 
   it("upserts a profile using the profile identity", async () => {
