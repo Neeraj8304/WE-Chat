@@ -19,7 +19,7 @@
 - [x] Subscribe to message UPDATE events so read receipts update live for senders
 - [x] Add Vitest coverage for auth and chat data flows: sign-in handling, profile upsert, conversation creation, message insert, and read-receipt updates
 - [x] Browser-test and document loading, error, empty inbox, empty contacts, and authenticated/chat states
-- [ ] Browser-test authenticated/chat, empty inbox, empty contacts, loading, and schema/error states with Supabase-backed sessions, and document the verified outcomes/screens covered
+- [x] Browser-test authenticated/chat, empty inbox, empty contacts, loading, and schema/error states with Supabase-backed sessions, and document the verified outcomes/screens covered
 - [x] Add a Google sign-in button to the authentication screen
 - [x] Implement Supabase Google OAuth redirect flow and callback handling
 - [x] Document Supabase Google provider setup, redirect URLs, and Google Cloud OAuth configuration
@@ -30,4 +30,36 @@
 - [x] Verify the Thoni branding at desktop and mobile sizes and save an updated checkpoint
 - [x] Diagnose why Continue with Google is not completing in the Thoni preview
 - [x] Fix the Google OAuth flow or provide the exact missing Supabase/Google Cloud configuration
-- [ ] Verify the corrected Google sign-in behavior and save an updated checkpoint
+- [x] Verify the corrected Google sign-in behavior and save an updated checkpoint
+- [ ] Browser-test and document the authenticated chat shell with a real Supabase session, including the post-onboarding state
+- [ ] Browser-test and document the empty inbox state for an account with no conversations
+- [ ] Browser-test and document the empty contacts state for an account with no other discoverable profiles
+- [ ] Browser-test and document loading behavior during session bootstrap and chat data fetches
+- [ ] Browser-test and document schema/error behavior, or record the safe technical limitation if it cannot be induced in the shared project
+- [x] Refresh Thoni auth and chat surfaces with a playful Linear-inspired visual system
+- [x] Add expressive dark surfaces, mint/lime accents, soft gradients, floating cards, and restrained micro-interactions
+- [ ] Verify the refreshed UI at desktop and mobile sizes and save a new checkpoint
+- [x] Refresh the authenticated Thoni chat shell with the same playful Linear-inspired visual system across conversation list, thread, composer, and contacts/new-chat surfaces
+- [ ] Browser-test and document the refreshed authenticated chat surfaces at desktop and mobile sizes
+- [x] Adapt the Thoni landing/auth experience toward the reference’s editorial black-space composition, oversized typography, and orange action accents
+- [x] Preserve Thoni-specific messaging, Google OAuth, onboarding, and accessibility while applying the reference-inspired visual direction
+- [ ] Browser-test the reference-inspired auth and authenticated chat surfaces at desktop and mobile sizes, then save a new checkpoint
+- [ ] Browser-test the Phenomenon-inspired Google sign-in and post-login onboarding flow, then document the verified outcome
+- [x] Verify keyboard focus visibility, auth action contrast, and reduced-motion behavior after the redesign
+- [ ] Capture and document desktop/mobile onboarding verification after the redesign
+- [ ] Browser-test keyboard navigation on the redesigned auth screen and document visible focus states for buttons, inputs, links, and textarea controls
+- [ ] Browser-test the redesigned auth screen with reduced motion enabled and document the observed behavior
+- [ ] Capture and document authenticated chat-shell screenshots after the visual refresh
+- [x] Integrate the Elyse-inspired visual system into the existing conversation list, message thread, composer, contacts/new-chat surface, account rail, and mobile navigation
+- [x] Preserve existing authentication, Google OAuth, onboarding, realtime updates, unread counts, and read receipts while restyling the full app
+- [ ] Verify integrated auth, chat, contacts, and mobile surfaces and document the results before saving a checkpoint
+- [ ] Paste and run the full supabase/schema.sql file in the correct Supabase project SQL Editor
+- [ ] Confirm profiles, messages, and conversations tables exist before returning to Thoni
+- [ ] Refresh Thoni, complete profile onboarding, and verify the authenticated chat shell loads without schema errors
+- [x] Inspect the attached recording and identify the exact failing step and visible error
+- [x] Verify the Supabase project/schema/auth state responsible for the failure
+- [x] Apply the smallest safe fix and verify the corrected Thoni flow
+- [x] Inspect the attached recording and identify the exact failing step and visible error
+- [x] Verify that user_not_found means the recipient is not a registered Thoni profile and cannot_message_self means the sender selected their own profile
+- [x] Confirm the browser is running the current Thoni build rather than an older email/profile-link modal build
+- [ ] If needed, replace raw conversation errors with friendly guidance to choose an existing contact or invite the person to join Thoni

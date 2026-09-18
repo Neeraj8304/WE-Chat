@@ -230,20 +230,20 @@ function AuthLanding({
   }
 
   return (
-    <main className="min-h-screen bg-[#f4f0ea] px-4 py-5 text-[#17201d] sm:px-6 lg:p-8">
-      <div className="mx-auto grid min-h-[calc(100vh-2.5rem)] max-w-[1400px] overflow-hidden rounded-[2rem] border border-[#ded8cd] bg-[#fbfaf7] shadow-[0_24px_80px_rgba(27,44,38,0.10)] lg:min-h-[calc(100vh-4rem)] lg:grid-cols-[1.04fr_0.96fr]">
-        <section className="relative hidden overflow-hidden bg-[#123f38] p-10 text-[#f5f3ea] lg:flex lg:flex-col lg:justify-between xl:p-14">
-          <div className="absolute -right-20 top-12 h-72 w-72 rounded-full border border-[#9ac2b8]/30" />
-          <div className="absolute -bottom-36 -left-24 h-96 w-96 rounded-full border border-[#9ac2b8]/20" />
+    <main className="phenom-auth-page min-h-screen px-4 py-5 text-[#17201d] sm:px-6 lg:p-8">
+      <div className="elyse-auth-card phenom-auth-card mx-auto grid min-h-[calc(100vh-2.5rem)] max-w-[1400px] overflow-hidden rounded-[2rem] border lg:min-h-[calc(100vh-4rem)] lg:grid-cols-[1.04fr_0.96fr]">
+        <section className="phenom-hero relative hidden overflow-hidden p-10 text-[#f5f3ea] lg:flex lg:flex-col lg:justify-between xl:p-14">
+          <div className="phenom-hero-orbit absolute -right-20 top-12 h-72 w-72 rounded-full border" />
+          <div className="phenom-hero-orbit absolute -bottom-36 -left-24 h-96 w-96 rounded-full border" />
           <div className="relative z-10 flex items-center gap-3 text-sm font-medium tracking-[0.18em] text-[#c9e3db] uppercase">
-            <span className="grid h-10 w-10 place-items-center rounded-2xl bg-[#d7efe8] text-[#123f38]">
+            <span className="phenom-mark grid h-10 w-10 place-items-center rounded-2xl bg-[#c8ffd1] text-[#0b4f44]">
               <MessageCircle className="h-5 w-5" />
             </span>
             Thoni
           </div>
 
-          <div className="relative z-10 max-w-xl">
-            <p className="mb-5 flex items-center gap-2 text-sm font-medium text-[#a9d2c8]">
+          <div className="elyse-hero-copy relative z-10 max-w-xl">
+            <p className="phenom-kicker mb-5 flex items-center gap-2 text-sm font-medium">
               <Sparkles className="h-4 w-4" /> conversations, considered
             </p>
             <h1 className="max-w-[650px] text-5xl font-semibold leading-[1.03] tracking-[-0.045em] xl:text-7xl">
@@ -254,14 +254,14 @@ function AuthLanding({
               within reach. No noise. Just the thread that matters.
             </p>
             <div className="mt-10 grid max-w-md grid-cols-2 gap-3">
-              <div className="rounded-2xl border border-white/10 bg-white/[0.07] p-4">
+              <div className="phenom-feature-card rounded-2xl border p-4">
                 <ShieldCheck className="mb-8 h-5 w-5 text-[#a9d2c8]" />
                 <p className="text-sm font-medium">Private by default</p>
                 <p className="mt-1 text-xs leading-5 text-[#a9c5bd]">
                   Your conversations are protected by row-level access rules.
                 </p>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-white/[0.07] p-4">
+              <div className="phenom-feature-card rounded-2xl border p-4">
                 <Globe2 className="mb-8 h-5 w-5 text-[#a9d2c8]" />
                 <p className="text-sm font-medium">People, not profiles</p>
                 <p className="mt-1 text-xs leading-5 text-[#a9c5bd]">
@@ -271,12 +271,13 @@ function AuthLanding({
             </div>
           </div>
 
-          <div className="relative z-10 flex items-center gap-3 text-xs text-[#a9c5bd]">
+          <div className="elyse-metadata relative z-10 flex items-center gap-3 pt-4 text-xs text-[#a9c5bd]">
+            <span className="elyse-number text-[10px]">01</span>
             <LockKeyhole className="h-4 w-4" /> End-to-end ready conversations
           </div>
         </section>
 
-        <section className="flex items-center justify-center p-6 sm:p-10 lg:p-14">
+        <section className="elyse-form-panel phenom-auth-panel flex items-center justify-center p-6 sm:p-10 lg:p-14">
           <div className="w-full max-w-md">
             <div className="mb-10 lg:hidden">
               <div className="mb-7 flex items-center gap-3 text-sm font-semibold tracking-[0.18em] text-[#123f38] uppercase">
@@ -305,7 +306,7 @@ function AuthLanding({
               </p>
             </div>
 
-            <div className="mb-7 grid grid-cols-2 rounded-xl bg-[#f0eee8] p-1 text-sm font-medium">
+            <div className="elyse-auth-tabs mb-7 grid grid-cols-2 rounded-xl p-1 text-sm font-medium">
               <button
                 type="button"
                 onClick={() => {
@@ -404,7 +405,7 @@ function AuthLanding({
               <button
                 disabled={busy}
                 type="submit"
-                className="group flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#123f38] px-5 text-sm font-semibold text-white transition hover:bg-[#0d332e] active:scale-[0.99] disabled:cursor-wait disabled:opacity-60"
+                className="phenom-primary-button group flex h-12 w-full items-center justify-center gap-2 rounded-xl px-5 text-sm font-semibold transition active:scale-[0.99] disabled:cursor-wait disabled:opacity-60"
               >
                 {busy
                   ? "One moment…"
@@ -418,7 +419,7 @@ function AuthLanding({
               type="button"
               disabled={busy}
               onClick={handleGoogleSignIn}
-              className="flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-[#d9d6ce] bg-white px-5 text-sm font-semibold text-[#38514a] transition hover:border-[#a3c8bd] hover:bg-[#f8fbf9] disabled:cursor-wait disabled:opacity-60"
+              className="phenom-secondary-button flex h-12 w-full items-center justify-center gap-2 rounded-xl border px-5 text-sm font-semibold text-[#23574d] transition disabled:cursor-wait disabled:opacity-60"
             >
               <Globe2 className="h-4 w-4" /> Continue with Google
             </button>
@@ -430,7 +431,7 @@ function AuthLanding({
               type="button"
               disabled={busy}
               onClick={handleMagicLink}
-              className="flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-[#d9d6ce] bg-white px-5 text-sm font-semibold text-[#38514a] transition hover:border-[#a3c8bd] hover:bg-[#f8fbf9] disabled:opacity-60"
+              className="phenom-secondary-button flex h-12 w-full items-center justify-center gap-2 rounded-xl border px-5 text-sm font-semibold text-[#23574d] transition disabled:opacity-60"
             >
               <Mail className="h-4 w-4" /> Send a magic link
             </button>
@@ -493,7 +494,7 @@ function ProfileOnboarding({
       <div className="w-full max-w-5xl overflow-hidden rounded-[2rem] border border-[#ded8cd] bg-[#fbfaf7] shadow-[0_24px_80px_rgba(27,44,38,0.10)] md:grid md:grid-cols-[0.85fr_1.15fr]">
         <div className="bg-[#123f38] p-8 text-[#f5f3ea] sm:p-12">
           <div className="mb-20 flex items-center gap-3 text-sm font-medium tracking-[0.18em] text-[#c9e3db] uppercase">
-            <span className="grid h-10 w-10 place-items-center rounded-2xl bg-[#d7efe8] text-[#123f38]">
+            <span className="phenom-mark grid h-10 w-10 place-items-center rounded-2xl bg-[#c8ffd1] text-[#0b4f44]">
               <MessageCircle className="h-5 w-5" />
             </span>{" "}
             Thoni
@@ -620,13 +621,13 @@ function ConversationList({
   onNew: () => void;
 }) {
   return (
-    <aside className="flex min-h-0 flex-col border-r border-[#e7e3dc] bg-[#fbfaf7]">
-      <div className="flex items-center justify-between px-5 pb-4 pt-5">
+    <aside className="thoni-chat-sidebar flex min-h-0 flex-col border-r">
+      <div className="elyse-panel-heading flex items-center justify-between px-5 pb-4 pt-5">
         <div>
-          <p className="text-xs font-semibold tracking-[0.16em] text-[#8d938e] uppercase">
+          <p className="text-xs font-semibold tracking-[0.18em] text-[#ff7848] uppercase">
             Messages
           </p>
-          <h1 className="mt-1 text-2xl font-semibold tracking-[-0.04em] text-[#1c2722]">
+          <h1 className="mt-1 text-2xl font-semibold tracking-[-0.05em] text-[#f3efe6]">
             Inbox
           </h1>
         </div>
@@ -634,7 +635,7 @@ function ConversationList({
           type="button"
           onClick={onNew}
           aria-label="New conversation"
-          className="grid h-10 w-10 place-items-center rounded-xl bg-[#e3f0ec] text-[#0f6b5f] transition hover:bg-[#cde3dc]"
+          className="thoni-chat-action grid h-10 w-10 place-items-center rounded-xl border border-white/15 bg-[#ff7848] text-[#1e1e1b] transition"
         >
           <Plus className="h-5 w-5" />
         </button>
@@ -672,7 +673,7 @@ function ConversationList({
                 key={conversation.id}
                 type="button"
                 onClick={() => onSelect(conversation)}
-                className={`flex w-full items-center gap-3 rounded-2xl p-3 text-left transition ${selectedId === conversation.id ? "bg-[#e7f1ed]" : "hover:bg-[#f3f2ed]"}`}
+                className={`thoni-chat-action flex w-full items-center gap-3 rounded-2xl border border-transparent p-3 text-left transition ${selectedId === conversation.id ? "border-[#ff7848]/60 bg-[#ff7848]/15 shadow-[0_10px_24px_rgba(0,0,0,0.18)]" : ""}`}
               >
                 <Avatar profile={conversation.otherProfile} size="sm" />
                 <span className="min-w-0 flex-1">
@@ -732,7 +733,7 @@ function ContactsPanel({
     [conversations]
   );
   return (
-    <section className="flex min-h-0 flex-col bg-[#fbfaf7]">
+    <section className="thoni-chat-sidebar flex min-h-0 flex-col">
       <div className="flex items-center gap-3 border-b border-[#e7e3dc] px-5 py-5">
         <button
           type="button"
@@ -742,10 +743,10 @@ function ContactsPanel({
           <ArrowLeft className="h-4 w-4" />
         </button>
         <div>
-          <p className="text-xs font-semibold tracking-[0.16em] text-[#8d938e] uppercase">
+          <p className="text-xs font-semibold tracking-[0.18em] text-[#ff7848] uppercase">
             People
           </p>
-          <h2 className="mt-1 text-2xl font-semibold tracking-[-0.04em] text-[#1c2722]">
+          <h2 className="mt-1 text-2xl font-semibold tracking-[-0.05em] text-[#f3efe6]">
             Contacts
           </h2>
         </div>
@@ -770,7 +771,7 @@ function ContactsPanel({
                 key={profile.id}
                 type="button"
                 onClick={() => onSelect(profile)}
-                className={`flex items-center gap-3 rounded-2xl p-3 text-left transition ${selectedId === profile.id ? "bg-[#e7f1ed]" : "hover:bg-[#f3f2ed]"}`}
+                className={`thoni-chat-action flex items-center gap-3 rounded-2xl border border-transparent p-3 text-left transition ${selectedId === profile.id ? "border-[#ff7848]/60 bg-[#ff7848]/15 shadow-[0_10px_24px_rgba(0,0,0,0.18)]" : ""}`}
               >
                 <Avatar profile={profile} />
                 <span className="min-w-0 flex-1">
@@ -928,8 +929,8 @@ function ChatThread({
   }
 
   return (
-    <section className="flex min-h-0 flex-1 flex-col bg-[#f7f5f0]">
-      <header className="flex shrink-0 items-center justify-between border-b border-[#e5e1d9] bg-[#fbfaf7] px-4 py-3 sm:px-6">
+    <section className="thoni-chat-main flex min-h-0 flex-1 flex-col">
+      <header className="elyse-thread-header thoni-chat-header flex shrink-0 items-center justify-between border-b px-4 py-3 sm:px-6">
         <div className="flex min-w-0 items-center gap-3">
           <button
             type="button"
@@ -1008,7 +1009,7 @@ function ChatThread({
                   className={`flex ${own ? "justify-end" : "justify-start"}`}
                 >
                   <div
-                    className={`max-w-[min(84%,32rem)] rounded-2xl px-4 py-3 text-sm leading-6 shadow-sm ${own ? "rounded-br-md bg-[#cfe8df] text-[#183d35]" : "rounded-bl-md border border-[#e3dfd7] bg-white text-[#3e4843]"}`}
+                    className={`max-w-[min(84%,32rem)] rounded-2xl px-4 py-3 text-sm leading-6 ${own ? "thoni-message-own rounded-br-md" : "thoni-message-other rounded-bl-md border"}`}
                   >
                     <p className="whitespace-pre-wrap">{message.content}</p>
                     <div
@@ -1031,9 +1032,9 @@ function ChatThread({
       </div>
       <form
         onSubmit={handleSend}
-        className="shrink-0 border-t border-[#e5e1d9] bg-[#fbfaf7] p-3 sm:p-4"
+        className="elyse-composer thoni-chat-composer shrink-0 border-t p-3 sm:p-4"
       >
-        <div className="mx-auto flex max-w-3xl items-end gap-2 rounded-2xl border border-[#ddd9d1] bg-white p-2 shadow-sm">
+        <div className="thoni-chat-input mx-auto flex max-w-3xl items-end gap-2 rounded-2xl border p-2 transition">
           <button
             type="button"
             aria-label="Attach a file"
@@ -1065,7 +1066,7 @@ function ChatThread({
             disabled={!draft.trim() || sending}
             type="submit"
             aria-label="Send message"
-            className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#123f38] text-white transition hover:bg-[#0d332e] disabled:cursor-not-allowed disabled:bg-[#d4ddd8]"
+            className="thoni-primary-button grid h-10 w-10 shrink-0 place-items-center rounded-xl text-white transition disabled:cursor-not-allowed disabled:opacity-50"
           >
             <Send className="h-4 w-4" />
           </button>
@@ -1085,7 +1086,7 @@ function AccountRail({
   onContacts: () => void;
 }) {
   return (
-    <aside className="hidden flex-col border-l border-[#e7e3dc] bg-[#fbfaf7] p-5 xl:flex">
+    <aside className="elyse-account-rail thoni-chat-rail hidden flex-col border-l p-5 xl:flex">
       <div className="mb-7 flex items-center justify-between">
         <p className="text-xs font-semibold tracking-[0.16em] text-[#8d938e] uppercase">
           Your space
@@ -1098,7 +1099,7 @@ function AccountRail({
           <ChevronDown className="h-4 w-4" />
         </button>
       </div>
-      <div className="rounded-3xl bg-[#123f38] p-5 text-[#f6f4ea]">
+      <div className="thoni-hero rounded-3xl p-5 text-[#f6f4ea]">
         <Avatar profile={profile} size="lg" />
         <h2 className="mt-5 text-xl font-semibold tracking-[-0.03em]">
           {profile.name}
@@ -1281,8 +1282,8 @@ function ChatApp({
   }
 
   return (
-    <main className="min-h-screen bg-[#f4f0ea] p-0 text-[#17201d] sm:p-3 lg:p-5">
-      <div className="mx-auto flex h-[100dvh] max-w-[1600px] flex-col overflow-hidden border border-[#ded8cd] bg-[#fbfaf7] shadow-[0_20px_60px_rgba(27,44,38,0.08)] sm:h-[calc(100dvh-1.5rem)] sm:rounded-[1.5rem] lg:h-[calc(100dvh-2.5rem)]">
+    <main className="elyse-chat-page thoni-chat-page min-h-screen p-0 text-[#17201d] sm:p-3 lg:p-5">
+      <div className="elyse-chat-shell thoni-chat-shell mx-auto flex h-[100dvh] max-w-[1600px] flex-col overflow-hidden border sm:h-[calc(100dvh-1.5rem)] sm:rounded-[1.5rem] lg:h-[calc(100dvh-2.5rem)]">
         {dataError && (
           <div className="shrink-0 border-b border-red-100 bg-red-50 px-5 py-3 text-center text-xs text-red-700">
             {dataError}
@@ -1333,18 +1334,20 @@ function ChatApp({
             onContacts={() => setView("contacts")}
           />
         </div>
-        <div className="flex shrink-0 items-center justify-between border-t border-[#e7e3dc] bg-[#fbfaf7] px-5 py-2.5 md:hidden">
+        <div className="elyse-mobile-nav thoni-mobile-nav flex shrink-0 items-center justify-between border-t px-5 py-2.5 md:hidden">
           <button
             type="button"
             onClick={() => setView("inbox")}
-            className={`flex flex-1 flex-col items-center gap-1 text-[10px] font-semibold ${view === "inbox" ? "text-[#0f6b5f]" : "text-[#9aa19b]"}`}
+            data-active={view === "inbox"}
+            className={`flex flex-1 flex-col items-center gap-1 text-[10px] font-semibold ${view === "inbox" ? "text-[#ff7848]" : "text-[#9aa19b]"}`}
           >
             <Menu className="h-4 w-4" /> Inbox
           </button>
           <button
             type="button"
             onClick={() => setView("contacts")}
-            className={`flex flex-1 flex-col items-center gap-1 text-[10px] font-semibold ${view === "contacts" ? "text-[#0f6b5f]" : "text-[#9aa19b]"}`}
+            data-active={view === "contacts"}
+            className={`flex flex-1 flex-col items-center gap-1 text-[10px] font-semibold ${view === "contacts" ? "text-[#ff7848]" : "text-[#9aa19b]"}`}
           >
             <UsersRound className="h-4 w-4" /> People
           </button>
